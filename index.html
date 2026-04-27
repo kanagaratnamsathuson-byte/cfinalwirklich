@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -100,18 +101,6 @@
   .tl-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-top: 0.4rem; flex-shrink: 0; }
   .tl-text { font-size: 0.82rem; line-height: 1.5; color: #ffffff; }
 
-  .lang-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0.5rem 0; border-bottom: 1px solid #2a2a2a;
-    font-size: 0.85rem; transition: color 0.2s; color: #ffffff;
-  }
-  .lang-item:last-child { border-bottom: none; }
-  .lang-item:hover { color: var(--accent); }
-  .lang-level {
-    font-size: 0.72rem; background: var(--black); color: white;
-    padding: 0.2rem 0.6rem; border-radius: 999px;
-  }
-
   .interest-chip {
     font-size: 0.82rem; background: var(--black); color: white;
     border: 1px solid var(--black); padding: 0.4rem 0.9rem;
@@ -177,14 +166,27 @@
     font-size: 0.78rem; color: #9ca3af; margin-top: 0.15rem;
   }
 
-  /* Sprachen Bars */
+  /* ── Sprachen Bars ── */
   .sp-item { padding: 0.55rem 0; border-bottom: 1px solid #2a2a2a; }
   .sp-item:last-child { border-bottom: none; }
   .sp-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; }
   .sp-lang { font-size: 0.85rem; color: #fff; }
   .sp-level { font-size: 0.7rem; background: #0a0a0a; color: #fff; padding: 0.18rem 0.55rem; border-radius: 999px; white-space: nowrap; }
   .sp-bar-bg { height: 5px; background: #2a2a2a; border-radius: 999px; overflow: hidden; }
-  .sp-bar-fill { height: 100%; border-radius: 999px; background: #60a5fa; }
+
+  /* Balken starten bei 0, wachsen erst wenn sichtbar */
+  .sp-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: #60a5fa;
+    width: 0%;                          /* Startzustand: unsichtbar */
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  /* Klasse wird per JS gesetzt wenn im Viewport */
+  .sp-bar-fill.animate {
+    width: var(--target-width);         /* Zielbreite aus data-Attribut */
+  }
+
   .sp-note { font-size: 0.72rem; color: #ffffff; margin-top: 0.25rem; }
 
   /* Blinkender Punkt */
@@ -305,7 +307,9 @@
           <span class="sp-lang">🇩🇪 Deutsch</span>
           <span class="sp-level">Muttersprache</span>
         </div>
-        <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 100%"></div></div>
+        <div class="sp-bar-bg">
+          <div class="sp-bar-fill" style="--target-width: 100%"></div>
+        </div>
       </div>
 
       <div class="sp-item">
@@ -313,7 +317,9 @@
           <span class="sp-lang">🇱🇰 Tamilisch</span>
           <span class="sp-level">Muttersprache</span>
         </div>
-        <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 100%"></div></div>
+        <div class="sp-bar-bg">
+          <div class="sp-bar-fill" style="--target-width: 100%"></div>
+        </div>
       </div>
 
       <div class="sp-item">
@@ -321,7 +327,9 @@
           <span class="sp-lang">🇬🇧 Englisch</span>
           <span class="sp-level">B2 / C1</span>
         </div>
-        <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 80%"></div></div>
+        <div class="sp-bar-bg">
+          <div class="sp-bar-fill" style="--target-width: 80%"></div>
+        </div>
         <div class="sp-note">Cambridge B2 Abschluss</div>
       </div>
 
@@ -330,7 +338,9 @@
           <span class="sp-lang">🇫🇷 Französisch</span>
           <span class="sp-level">A2</span>
         </div>
-        <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 50%"></div></div>
+        <div class="sp-bar-bg">
+          <div class="sp-bar-fill" style="--target-width: 50%"></div>
+        </div>
       </div>
     </div>
 
@@ -494,5 +504,36 @@
 
   </div>
 </div>
+
+<script>
+  // Intersection Observer: Balken animieren sobald der Sprachen-Block sichtbar wird
+  const bars = document.querySelectorAll('.sp-bar-fill');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Kurze Verzögerung damit die CSS-Transition nicht sofort feuert
+          const bar = entry.target;
+          const delay = bar.dataset.delay || 0;
+          setTimeout(() => {
+            bar.classList.add('animate');
+          }, delay);
+          observer.unobserve(bar); // Nur einmal auslösen
+        }
+      });
+    },
+    {
+      threshold: 0.3, // Mindestens 30% des Elements muss sichtbar sein
+    }
+  );
+
+  // Gestaffelte Verzögerung pro Balken (0, 150, 300, 450 ms)
+  bars.forEach((bar, i) => {
+    bar.dataset.delay = i * 300;
+    observer.observe(bar);
+  });
+</script>
+
 </body>
 </html>
