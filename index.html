@@ -32,7 +32,6 @@
     border: 1.5px solid var(--accent); padding: 0.25rem 0.7rem; border-radius: 2px;
   }
 
-  /* ── Profilbild ── */
   .hero-avatar {
     flex-shrink: 0;
     width: 160px;
@@ -42,37 +41,6 @@
     object-fit: cover;
     box-shadow: 0 0 20px rgba(96, 165, 250, 0.25);
     background: #1a1a1a;
-  }
-
-  /* Upload-Overlay (nur sichtbar wenn kein echtes Bild) */
-  .avatar-wrapper {
-    position: relative;
-    flex-shrink: 0;
-    width: 160px;
-    height: 190px;
-  }
-  .avatar-wrapper input[type="file"] {
-    position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 2;
-    border-radius: 8px;
-  }
-  .avatar-placeholder {
-    width: 160px; height: 190px; border-radius: 8px;
-    border: 2.5px dashed var(--accent);
-    background: #111;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 0.3rem; cursor: pointer;
-    transition: background 0.2s;
-  }
-  .avatar-placeholder:hover { background: #1a1a1a; }
-  .avatar-placeholder span { font-size: 2rem; }
-  .avatar-placeholder p { font-size: 0.65rem; color: var(--accent); text-align: center; letter-spacing: 0.05em; }
-  .avatar-img {
-    display: none;
-    width: 160px; height: 190px; border-radius: 8px;
-    border: 2.5px solid var(--accent);
-    object-fit: cover;
-    box-shadow: 0 0 20px rgba(96, 165, 250, 0.25);
   }
 
   .contact-info-vertical {
@@ -213,16 +181,15 @@
       <p>Lernender Informatik · Plattformentwicklung</p>
       <span class="tag">2. Lehrjahr · DO-BIS-COB</span>
     </div>
-    <img 
-  class="hero-avatar"
-  src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/foto.jpg"
-  alt="Profilbild"
->
+    <img
+      class="hero-avatar"
+      src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/foto.jpg"
+      alt="Profilbild"
+    >
   </div>
 
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
 
-    <!-- Steckbrief links -->
     <div class="panel">
       <p class="panel-title">👤 Steckbrief</p>
       <div class="contact-info-vertical">
@@ -257,7 +224,6 @@
       </div>
     </div>
 
-    <!-- Über mich rechts -->
     <div class="panel">
       <p class="panel-title">💬 Über mich</p>
       <p style="font-size: 0.85rem; line-height: 1.8; color: #cccccc; margin-bottom: 0.8rem;">
