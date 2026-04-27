@@ -13,6 +13,7 @@
     --line: #1a1a1a;
     --muted: #6b6b6b;
   }
+
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--white); padding: 2rem 2.5rem; }
   .page { max-width: 100%; margin: 0 auto; font-size: 13px; }
 
@@ -23,13 +24,29 @@
     padding: 1.8rem; background: var(--black); border-radius: 12px;
     margin-bottom: 1rem; animation: fadeUp 0.6s ease both;
   }
-  .hero-text h1 { font-family: 'DM Serif Display', serif; font-size: 2.8rem; color: #ffffff; line-height: 1.1; }
-  .hero-text p { color: #ffffff; font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 0.05em; }
+
+  .hero-text h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem; color: #ffffff; line-height: 1.1;
+  }
+
+  .hero-text p {
+    color: #ffffff;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    letter-spacing: 0.05em;
+  }
+
   .tag {
-    display: inline-block; margin-top: 0.6rem;
-    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--accent);
-    border: 1.5px solid var(--accent); padding: 0.25rem 0.7rem; border-radius: 2px;
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    padding: 0.25rem 0.7rem;
   }
 
   .hero-avatar {
@@ -43,139 +60,76 @@
     background: #1a1a1a;
   }
 
-  .contact-info-vertical {
-    display: flex; flex-direction: column; gap: 0.5rem;
-  }
-  .contact-name {
-    font-size: 0.95rem; font-weight: 600; color: #ffffff; margin-bottom: 0.3rem;
-  }
-  .contact-item-vertical {
-    display: flex; flex-direction: column; gap: 0.15rem;
-  }
-  .contact-label {
-    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--accent);
-  }
-  .contact-value {
-    font-size: 0.8rem; color: #ffffff; line-height: 1.4;
-  }
-  .contact-link {
-    font-size: 0.8rem; color: #ffffff; text-decoration: none;
-    transition: color 0.2s;
-  }
-  .contact-link:hover { color: var(--accent); }
-  .contact-divider {
-    height: 1px; background: #2a2a2a; margin: 0.3rem 0;
-  }
-
-  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
-  .grid-full { grid-column: 1 / -1; }
-
   .panel {
-    background: #1a1a1a; border: 1px solid var(--line);
-    border-radius: 10px; padding: 1rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-    animation: fadeUp 0.6s ease both;
-    color: var(--white);
+    background: #1a1a1a;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: white;
   }
-  .panel:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(96, 165, 250, 0.2); }
 
   .panel-title {
-    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em;
-    text-transform: uppercase; color: #ffffff; margin-bottom: 1rem;
-    padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a2a;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #ffffff;
   }
 
   .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .chip {
-    font-size: 0.78rem; background: #0a0a0a;
-    border: 1px solid #2a2a2a; padding: 0.3rem 0.75rem;
-    border-radius: 999px; transition: all 0.2s; cursor: default;
-    color: #ffffff;
-  }
-  .chip:hover { border-color: var(--accent); color: var(--accent); background: #1a1a1a; }
-
-  .timeline { display: flex; flex-direction: column; gap: 0.75rem; }
-  .tl-item { display: flex; gap: 0.75rem; align-items: flex-start; }
-  .tl-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-top: 0.4rem; flex-shrink: 0; }
-  .tl-text { font-size: 0.82rem; line-height: 1.5; color: #ffffff; }
-
-  .lang-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0.5rem 0; border-bottom: 1px solid #2a2a2a;
-    font-size: 0.85rem; transition: color 0.2s; color: #ffffff;
-  }
-  .lang-item:last-child { border-bottom: none; }
-  .lang-item:hover { color: var(--accent); }
-  .lang-level {
-    font-size: 0.72rem; background: var(--black); color: white;
-    padding: 0.2rem 0.6rem; border-radius: 999px;
-  }
 
   .interest-chip {
-    font-size: 0.82rem; background: var(--black); color: white;
-    border: 1px solid var(--black); padding: 0.4rem 0.9rem;
-    border-radius: 999px; transition: all 0.2s; cursor: default;
+    font-size: 0.78rem;
+    background: #0a0a0a;
+    border: 1px solid #2a2a2a;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    transition: all 0.2s;
+    cursor: pointer;
+    color: #ffffff;
   }
-  .interest-chip:hover { background: var(--accent); border-color: var(--accent); }
 
-  .section-group { margin-bottom: 1.2rem; }
-  .section-title {
-    font-size: 0.9rem; font-weight: 600; color: #ffffff;
-    margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px solid #2a2a2a;
+  .interest-chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: #1a1a1a;
   }
-  .list-items { display: flex; flex-direction: column; gap: 0.4rem; }
-  .list-item {
-    font-size: 0.8rem; line-height: 1.4; color: #ffffff;
-    padding-left: 1rem; position: relative;
-  }
-  .list-item:before { content: "•"; position: absolute; left: 0; }
 
-  .linkedin-link {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.5rem 1rem; background: #0a0a0a; border: 1px solid var(--accent);
-    border-radius: 6px; text-decoration: none; color: var(--accent);
-    transition: all 0.2s; cursor: pointer; font-size: 0.85rem; font-weight: 600;
-  }
-  .linkedin-link:hover { background: var(--accent); color: #000000; }
-  .linkedin-logo { font-size: 1.2rem; }
+  /* ================= POPUP ================= */
 
-  .uk-button {
-    display: inline-block;
-    padding: 0.4rem 0.8rem; background: #0a0a0a; border: 1px solid var(--accent);
-    border-radius: 4px; text-decoration: none; color: var(--accent);
-    transition: all 0.2s; font-size: 0.75rem; font-weight: 600;
-    white-space: nowrap;
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
   }
-  .uk-button:hover { background: var(--accent); color: #000000; }
 
-  /* Bildungsweg Timeline */
-  .edu-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
-  .edu-timeline::before {
-    content: ''; position: absolute; left: 72px; top: 8px;
-    bottom: 8px; width: 2px; background: #2a2a2a;
+  .modal-content {
+    background: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid #2a2a2a;
+    animation: fadeUp 0.3s ease both;
   }
-  .edu-item {
-    display: flex; gap: 1.2rem; align-items: flex-start;
-    padding: 0.7rem 0; position: relative;
+
+  .close {
+    float: right;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: white;
   }
-  .edu-year {
-    font-size: 0.72rem; font-weight: 600; color: var(--accent);
-    letter-spacing: 0.04em; width: 60px; flex-shrink: 0;
-    padding-top: 0.15rem; text-align: right;
-  }
-  .edu-node {
-    width: 12px; height: 12px; border-radius: 50%;
-    background: var(--accent); border: 2px solid #0a0a0a;
-    flex-shrink: 0; margin-top: 0.2rem; z-index: 1;
-    box-shadow: 0 0 8px rgba(96,165,250,0.4);
-  }
-  .edu-content { flex: 1; }
-  .edu-role {
-    font-size: 0.85rem; font-weight: 600; color: #ffffff; line-height: 1.3;
-  }
-  .edu-place {
-    font-size: 0.78rem; color: #9ca3af; margin-top: 0.15rem;
+
+  .close:hover {
+    color: var(--accent);
   }
 
   @keyframes fadeUp {
@@ -183,26 +137,11 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .panel:nth-child(1) { animation-delay: 0.1s; }
-  .panel:nth-child(2) { animation-delay: 0.2s; }
-  .panel:nth-child(3) { animation-delay: 0.3s; }
-  .panel:nth-child(4) { animation-delay: 0.4s; }
-  .panel:nth-child(5) { animation-delay: 0.5s; }
-  .panel:nth-child(6) { animation-delay: 0.6s; }
-  .panel:nth-child(7) { animation-delay: 0.7s; }
-  .panel:nth-child(8) { animation-delay: 0.8s; }
-
-  @media (max-width: 900px) {
-    .grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 600px) {
-    .hero { flex-direction: column-reverse; align-items: flex-start; }
-    .grid { grid-template-columns: 1fr; }
-    .grid-full { grid-column: 1; }
-  }
 </style>
 </head>
+
 <body>
+
 <div class="page">
 
   <div class="hero">
@@ -211,242 +150,74 @@
       <p>Lernender Informatik · Plattformentwicklung</p>
       <span class="tag">2. Lehrjahr · DO-BIS-COB</span>
     </div>
+
     <img
       class="hero-avatar"
       src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/foto.jpg"
-      alt="Profilbild"
     >
   </div>
 
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+  <!-- ================= HOBBYS ================= -->
 
-    <div class="panel">
-      <p class="panel-title">👤 Steckbrief</p>
-      <div class="contact-info-vertical">
-        <div class="contact-name">Sathuson Kanagaratnam</div>
-        <div class="contact-item-vertical">
-          <span class="contact-label">Telefon</span>
-          <a href="tel:+41584637400" class="contact-link">+41 58 463 74 00</a>
-        </div>
-        <div class="contact-item-vertical">
-          <span class="contact-label">Mobil</span>
-          <a href="tel:+41792903161" class="contact-link">+41 79 290 31 61</a>
-        </div>
-        <div class="contact-item-vertical">
-          <span class="contact-label">E-Mail</span>
-          <a href="mailto:sathuson.kanagaratnam@bit.admin.ch" class="contact-link">sathuson.kanagaratnam@bit.admin.ch</a>
-        </div>
-        <div class="contact-divider"></div>
-        <div class="contact-item-vertical">
-          <span class="contact-label">Arbeitgeber</span>
-          <span class="contact-value">Bundesamt für Informatik und Telekomunikation</span>
-        </div>
-        <div class="contact-item-vertical">
-          <span class="contact-label">Adresse</span>
-          <span class="contact-value">Eichenweg 3<br>Campus Meielen<br>3052 Zollikofen</span>
-        </div>
-      </div>
-      <div style="margin-top: 1rem;">
-        <a href="https://www.linkedin.com/in/sathuson-kanagaratnam-8089033ab/" target="_blank" class="linkedin-link">
-          <span class="linkedin-logo">in</span>
-          <span>LinkedIn</span>
-        </a>
-      </div>
+  <div class="panel">
+    <p class="panel-title">?? Hobbys</p>
+
+    <div class="chips">
+      <span class="interest-chip">?? Gaming</span>
+      <span class="interest-chip">? Fussball</span>
+      <span class="interest-chip">?? Fitness</span>
+      <span class="interest-chip">?? Boxen</span>
+
+      <!-- ??? CLICK -->
+      <span class="interest-chip" onclick="openMotorcycleModal()">
+        ??? Motorrad fahren
+      </span>
+
     </div>
-
-    <div class="panel">
-      <p class="panel-title">💬 Über mich</p>
-      <p style="font-size: 0.85rem; line-height: 1.8; color: #cccccc; margin-bottom: 0.8rem;">
-        Ich heisse Sathuson, bin 17 Jahre alt und komme aus der Region Bern. Zurzeit mache ich meine Lehre als Informatiker EFZ mit Schwerpunkt Plattformentwicklung beim Bundesamt für Informatik und Telekommunikation.
-      </p>
-      <p style="font-size: 0.85rem; line-height: 1.8; color: #cccccc; margin-bottom: 0.8rem;">
-        Computer und Technik haben mich schon früh fasziniert. Deshalb war für mich schnell klar, dass ich in die Informatik gehen will. Ich wollte nicht nur Dinge benutzen, sondern verstehen, wie sie funktionieren – auch im Hintergrund.
-      </p>
-      <div style="padding-top: 0.8rem;">
-        <p class="panel-title" style="margin-bottom: 0.6rem;">🎮 Hobbys</p>
-        <div class="chips">
-          <span class="interest-chip">🎮 Gaming</span>
-          <span class="interest-chip">⚽ Fussball</span>
-          <span class="interest-chip">💪 Fitness</span>
-          <span class="interest-chip">🥊 Boxen</span>
-          <span class="interest-chip">💻 IT Projekte</span>
-          <span class="interest-chip">🏍️ Motorrad fahren</span>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <div class="grid">
+</div>
 
-    <div class="panel">
-      <p class="panel-title">🌍 Sprachen</p>
-      <div class="lang-item"><span>🇩🇪 Deutsch</span><span class="lang-level">Muttersprache</span></div>
-      <div class="lang-item"><span>🇱🇰 Tamilisch</span><span class="lang-level">Muttersprache</span></div>
-      <div class="lang-item"><span>🇬🇧 Englisch</span><span class="lang-level">B2/C1</span></div>
-      <div class="lang-item" style="font-size: 0.75rem; color: #7a9fd4;">Cambridge B2 Abschluss</div>
-      <div class="lang-item"><span>🇫🇷 Französisch</span><span class="lang-level">A2</span></div>
-    </div>
+<!-- ================= POPUP ================= -->
 
-    <div class="panel">
-      <p class="panel-title">💡 Interessen</p>
-      <div class="chips">
-        <span class="interest-chip">🐧 Linux</span>
-        <span class="interest-chip">🌐 Netzwerke</span>
-        <span class="interest-chip">🐍 Python</span>
-        <span class="interest-chip">🗄️ Datenbanken</span>
-        <span class="interest-chip">🐳 Docker</span>
-      </div>
-    </div>
+<div id="motorcycleModal" class="modal">
+  <div class="modal-content">
 
-    <div class="panel">
-      <p class="panel-title">🎯 Skills · 1. Lehrjahr (Basislehrjahr)</p>
-      <div class="chips">
-        <span class="chip">Programmieren</span>
-        <span class="chip">Betriebssysteme</span>
-        <span class="chip">Telematik</span>
-        <span class="chip">Datenbanken</span>
-        <span class="chip">IoT Grundlagen</span>
-        <span class="chip">Netze</span>
-        <span class="chip">Server & Dienste</span>
-        <span class="chip">Virtualisierung</span>
-        <span class="chip">IT-Sicherheit</span>
-        <span class="chip">Cloud</span>
-      </div>
-    </div>
+    <span class="close" onclick="closeMotorcycleModal()">&times;</span>
 
-    <!-- BILDUNGSWEG -->
-    <div class="panel grid-full">
-      <p class="panel-title">📚 Bildungsweg</p>
-      <div class="edu-timeline">
+    <h2>??? Motorrad fahren</h2>
 
-        <div class="edu-item">
-          <div class="edu-year">2025 – 2028</div>
-          <div class="edu-node"></div>
-          <div class="edu-content">
-            <div class="edu-role">Lernender Informatiker EFZ</div>
-            <div class="edu-place">Bundesamt für Informatik und Telekommunikation (BIT) · Zollikofen</div>
-          </div>
-        </div>
+    <img
+      src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/mottorrad.jpg"
+      style="width:100%; border-radius:10px; margin-top:10px;"
+    >
 
-        <div class="edu-item">
-          <div class="edu-year">seit 2024</div>
-          <div class="edu-node"></div>
-          <div class="edu-content">
-            <div class="edu-role">Berufslehre Informatiker Plattformentwicklung EFZ</div>
-            <div class="edu-place">BIT · Klasse INF2024a · gibb Bern</div>
-          </div>
-        </div>
-
-        <div class="edu-item">
-          <div class="edu-year">2024 – 2025</div>
-          <div class="edu-node"></div>
-          <div class="edu-content">
-            <div class="edu-role">Basislehrjahr ICT</div>
-            <div class="edu-place">BBC Bern – Basisbildungszentrum ICT · Berufsbildungscenter Bern</div>
-          </div>
-        </div>
-
-        <div class="edu-item">
-          <div class="edu-year">2021 – 2024</div>
-          <div class="edu-node"></div>
-          <div class="edu-content">
-            <div class="edu-role">Sekundarstufe</div>
-            <div class="edu-place">Sekundarschule Sternenberg</div>
-          </div>
-        </div>
-
-        <div class="edu-item">
-          <div class="edu-year">2014 – 2021</div>
-          <div class="edu-node"></div>
-          <div class="edu-content">
-            <div class="edu-role">Primarschule</div>
-            <div class="edu-place">Primarschule Niederscherli</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="panel grid-full">
-      <p class="panel-title">🛠️ BIT · 2. Lehrjahr</p>
-      <div class="section-group">
-        <div class="section-title">1. Semester (PS-OSS-CCR)</div>
-        <div class="chips">
-          <span class="chip">Remedy Asset Management</span>
-          <span class="chip">Change Management</span>
-        </div>
-        <div class="timeline" style="margin-top: 0.8rem;">
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-text">Asset Management Verwalten</div></div>
-        </div>
-      </div>
-      <div class="section-group">
-        <div class="section-title">2. Semester (DO-BIS-COB · Connectivity Building)</div>
-        <div class="chips">
-          <span class="chip">Telefonie</span>
-          <span class="chip">LCM Staging</span>
-          <span class="chip">Visio Schemas</span>
-          <span class="chip">Bossy DB</span>
-          <span class="chip">Kupfer & Glas</span>
-          <span class="chip">L3 VLAN</span>
-          <span class="chip">QIP / Subnetting</span>
-          <span class="chip">WAN-Erschliessung</span>
-          <span class="chip">BIT-Hardware</span>
-        </div>
-        <div class="timeline" style="margin-top: 0.8rem;">
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-text">Mitarbeit beim LCM S2S – Staging des Routertyps C1131-8PLTEPWE</div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-text">Schemaerstellung und Anpassungen in Visio</div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-text">Vertiefter Einsatz von Bossy (Datenbank Kundenstandorte)</div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-text">Erstellung diverser L3-VLAN-Interfaces</div></div>
-          <div class="tl-item"><div class="tl-dot"></div><div class="tl-text">Subnetzverwaltung im QIP (IP-Verwaltungstool)</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel grid-full">
-      <p class="panel-title">🎓 Berufsschule</p>
-      <div class="section-group">
-        <div class="section-title">1. Lehrjahr</div>
-        <div class="list-items">
-          <div class="list-item">431 Aufträge im eigenen Berufsumfeld selbständig durchführen</div>
-          <div class="list-item">319 Applikationen entwerfen und implementieren</div>
-          <div class="list-item">117 Informatik- und Netzinfrastruktur für ein Kleines Unternehmen realisieren</div>
-          <div class="list-item">162 Daten analysieren und modellieren</div>
-          <div class="list-item">231 Datenschutz und Datensicherheit anwenden</div>
-          <div class="list-item">164 Datenbanken erstellen und Daten einfügen</div>
-          <div class="list-item">122 Abläufe mit einer Scriptsprache automatisieren</div>
-          <div class="list-item">114 Codierungs-, Kompressions- und Verschlüsselungsverfahren einsetzen</div>
-        </div>
-      </div>
-      <div class="section-group">
-        <div class="section-title">2. Lehrjahr</div>
-        <div class="list-items">
-          <div class="list-item">129 LAN-Komponenten in Betrieb nehmen</div>
-          <div class="list-item">123 Serverdienste in Betrieb nehmen</div>
-          <div class="list-item">346 Cloud Lösungen konzipieren und realisieren</div>
-          <div class="list-item">141 Datenbanksystem in Betrieb nehmen</div>
-          <div class="list-item">143 Backup- und Restore-Systeme implementieren</div>
-          <div class="list-item">169 Services mit Container bereitstellen</div>
-        </div>
-      </div>
-      <div class="section-group">
-        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem;">
-          <div class="section-title" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none;">Überbetriebliche Kurse (1. Lehrjahr)</div>
-          <a href="https://confluence.bit.admin.ch/spaces/~u80875149/pages/1383237751/%C3%9CK+Zertifikate" target="_blank" class="uk-button">ÜK Zertifikate →</a>
-        </div>
-        <div class="list-items">
-          <div class="list-item">187 ICT-Arbeitsplatz mit Betriebssystem in Betrieb nehmen</div>
-          <div class="list-item">106 Datenbanken abfragen, bearbeiten und warten</div>
-          <div class="list-item">216 Internet of Everything - Endgeräte in bestehende Plattform integrieren</div>
-          <div class="list-item">109 Dienste in der Public Cloud betreiben und überwachen</div>
-          <div class="list-item">184 Netzwerksicherheit implementieren</div>
-          <div class="list-item">188 Services warten, überwachen und betreiben</div>
-          <div class="list-item">190 Virtualisierungsplattform aufbauen und betreiben</div>
-        </div>
-      </div>
-    </div>
+    <p style="margin-top:10px; font-size:0.9rem; color:#ccc; line-height:1.6;">
+      Motorrad fahren bedeutet für mich Freiheit, Ruhe und Abenteuer.
+      Es ist ein Hobby, bei dem ich komplett abschalten kann und den Moment geniesse.
+    </p>
 
   </div>
 </div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+function openMotorcycleModal() {
+  document.getElementById("motorcycleModal").style.display = "flex";
+}
+
+function closeMotorcycleModal() {
+  document.getElementById("motorcycleModal").style.display = "none";
+}
+
+window.addEventListener("click", function(event) {
+  let modal = document.getElementById("motorcycleModal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+</script>
+
 </body>
 </html>
