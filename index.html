@@ -398,21 +398,5 @@
 
   </div>
 </div>
-
-<script>
-  function loadAvatar(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const img = document.getElementById('avatarImg');
-      const placeholder = document.getElementById('avatarPlaceholder');
-      img.src = e.target.result;
-      img.style.display = 'block';
-      placeholder.style.display = 'none';
-    };
-    reader.readAsDataURL(file);
-  }
-</script>
 </body>
 </html>
