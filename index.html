@@ -4,244 +4,428 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sathuson Kanagaratnam</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #080b10; --surface: #0e1218; --border: #1c2230; --border2: #28354a;
-    --accent: #4f8ef7; --accent2: #7eb8f7; --text: #e8edf5;
-    --muted: #6b7a94; --muted2: #8a9ab8; --gold: #c9a84c;
-  }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-  body::before {
-    content: ''; position: fixed; inset: 0;
-    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px; opacity: 0.3; pointer-events: none; z-index: 0;
-  }
-  .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
-  .hero {
-    display: grid; grid-template-columns: 1fr auto; gap: 2.5rem; align-items: end;
-    padding: 3rem 3rem 2.5rem; background: var(--surface); border: 1px solid var(--border);
-    border-radius: 20px; margin-bottom: 1.5rem; position: relative; overflow: hidden;
-    animation: rise 0.7s cubic-bezier(0.22,1,0.36,1) both;
-  }
-  .hero::before {
-    content: ''; position: absolute; top: -80px; left: -60px; width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%); pointer-events: none;
-  }
-  .hero-eyebrow {
-    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.6rem;
-  }
-  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
-  .hero h1 {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.05;
-    letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.6rem;
-  }
-  .hero-sub { font-size: 0.9rem; color: var(--muted2); letter-spacing: 0.03em; margin-bottom: 1.4rem; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); border: 1px solid rgba(79,142,247,0.35); background: rgba(79,142,247,0.07);
-    padding: 0.3rem 0.9rem; border-radius: 4px;
-  }
-  .avatar {
-    width: 210px; height: 250px; border-radius: 14px; object-fit: cover;
-    border: 1px solid var(--border2); box-shadow: 0 0 0 6px rgba(79,142,247,0.06);
-  }
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
-  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
-  .full { grid-column: 1 / -1; }
-  .panel {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-    padding: 1.4rem 1.5rem; animation: rise 0.6s cubic-bezier(0.22,1,0.36,1) both;
-    transition: border-color 0.25s, transform 0.25s;
-  }
-  .panel:hover { border-color: var(--border2); transform: translateY(-3px); }
-  .panel-label {
-    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 1.1rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .contact-grid { display: flex; flex-direction: column; gap: 0.9rem; }
-  .contact-row label { display: block; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.2rem; }
-  .contact-row a, .contact-row span { font-size: 0.82rem; color: var(--text); text-decoration: none; transition: color 0.2s; }
-  .contact-row a:hover { color: var(--accent2); }
-  .sep { height: 1px; background: var(--border); margin: 0.4rem 0; }
-  .li-btn {
-    display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem;
-    padding: 0.45rem 1rem; background: rgba(10,102,194,0.12); border: 1px solid rgba(10,102,194,0.3);
-    border-radius: 8px; font-size: 0.8rem; font-weight: 500; color: #7eb8f7;
-    text-decoration: none; transition: all 0.2s;
-  }
-  .li-btn:hover { background: rgba(10,102,194,0.22); border-color: rgba(10,102,194,0.5); }
-  .li-icon { width: 20px; height: 20px; border-radius: 4px; background: #0a66c2; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; }
-  .about-text { font-size: 0.85rem; line-height: 1.85; color: var(--muted2); margin-bottom: 1rem; }
-  .chip-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-  .chip { font-size: 0.76rem; padding: 0.28rem 0.8rem; border-radius: 999px; border: 1px solid var(--border2); background: rgba(255,255,255,0.03); color: var(--muted2); transition: all 0.2s; cursor: default; }
-  .chip:hover { border-color: var(--accent); color: var(--accent); }
-  .chip-hobby { background: rgba(79,142,247,0.07); border-color: rgba(79,142,247,0.2); color: var(--accent2); }
-  .lang-row { display: flex; justify-content: space-between; align-items: center; padding: 0.65rem 0; border-bottom: 1px solid var(--border); font-size: 0.83rem; color: var(--text); transition: color 0.2s; }
-  .lang-row:last-child { border-bottom: none; }
-  .lang-row:hover { color: var(--accent2); }
-  .lang-pill { font-size: 0.68rem; font-weight: 500; padding: 0.18rem 0.65rem; border-radius: 999px; background: rgba(79,142,247,0.1); color: var(--accent); border: 1px solid rgba(79,142,247,0.2); }
-  .lang-note { font-size: 0.72rem; color: var(--muted); padding: 0.4rem 0; }
-  .tl-row { display: grid; grid-template-columns: 20px 1fr; gap: 0.8rem; align-items: start; padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
-  .tl-row:last-child { border-bottom: none; }
-  .tl-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-top: 0.45rem; box-shadow: 0 0 8px rgba(79,142,247,0.5); }
-  .tl-body { font-size: 0.81rem; line-height: 1.55; color: var(--muted2); }
-  .sec-title { font-size: 0.78rem; font-weight: 500; color: var(--text); margin-bottom: 0.7rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.6rem; }
-  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .sec-gap { margin-top: 1.4rem; }
-  .bullet-list { display: flex; flex-direction: column; gap: 0.4rem; }
-  .bullet-item { font-size: 0.79rem; line-height: 1.55; color: var(--muted2); padding-left: 1.1rem; position: relative; }
-  .bullet-item::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 4px; height: 4px; border-radius: 50%; background: var(--border2); }
-  .link-pill { display: inline-flex; align-items: center; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; color: var(--accent); border: 1px solid rgba(79,142,247,0.25); background: rgba(79,142,247,0.07); padding: 0.22rem 0.65rem; border-radius: 6px; text-decoration: none; transition: all 0.2s; }
-  .link-pill:hover { background: rgba(79,142,247,0.15); border-color: var(--accent); }
-  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  .panel:nth-child(1) { animation-delay: 0.05s; } .panel:nth-child(2) { animation-delay: 0.12s; }
-  .panel:nth-child(3) { animation-delay: 0.18s; } .panel:nth-child(4) { animation-delay: 0.24s; }
-  .panel:nth-child(5) { animation-delay: 0.30s; } .panel:nth-child(6) { animation-delay: 0.36s; }
-  @media (max-width: 860px) { .grid3 { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 600px) { .hero { grid-template-columns: 1fr; } .avatar { width: 110px; height: 135px; } .grid2, .grid3 { grid-template-columns: 1fr; } .full { grid-column: 1; } .wrap { padding: 1.5rem 1rem 3rem; } }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080b10;
+  --surface: #0e1218;
+  --border: #1c2230;
+  --border2: #28354a;
+  --accent: #4f8ef7;
+  --accent2: #7eb8f7;
+  --text: #e8edf5;
+  --muted: #6b7a94;
+  --muted2: #8a9ab8;
+}
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 2rem;
+  width: 100%;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.5rem 3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 1.2rem;
+}
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 3.4rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.sub {
+  font-size: 0.88rem;
+  color: var(--muted2);
+  margin-bottom: 1.2rem;
+}
+.badge {
+  display: inline-flex;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(79,142,247,0.35);
+  background: rgba(79,142,247,0.07);
+  padding: 0.28rem 0.85rem;
+  border-radius: 4px;
+}
+.avatar {
+  width: 210px;
+  height: 250px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid var(--border2);
+  display: block;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.grid3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.full { grid-column: 1 / -1; }
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem;
+}
+.plabel {
+  font-size: 0.63rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+.crow { margin-bottom: 0.8rem; }
+.crow label {
+  display: block;
+  font-size: 0.63rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+.crow a, .crow span {
+  font-size: 0.81rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.crow a:hover { color: var(--accent2); }
+.sep { height: 1px; background: var(--border); margin: 0.6rem 0; }
+.libtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  padding: 0.42rem 1rem;
+  background: rgba(10,102,194,0.12);
+  border: 1px solid rgba(10,102,194,0.3);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #7eb8f7;
+  text-decoration: none;
+}
+.liico {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: #0a66c2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+.atext {
+  font-size: 0.84rem;
+  line-height: 1.8;
+  color: var(--muted2);
+  margin-bottom: 0.9rem;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+}
+.chip {
+  font-size: 0.74rem;
+  padding: 0.26rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border2);
+  background: rgba(255,255,255,0.02);
+  color: var(--muted2);
+}
+.chipb {
+  background: rgba(79,142,247,0.07);
+  border-color: rgba(79,142,247,0.2);
+  color: var(--accent2);
+}
+.lrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+}
+.lrow:last-child { border-bottom: none; }
+.lpill {
+  font-size: 0.67rem;
+  font-weight: 500;
+  padding: 0.16rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(79,142,247,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(79,142,247,0.2);
+}
+.lnote { font-size: 0.7rem; color: var(--muted); padding: 0.3rem 0; }
+.stitle {
+  font-size: 0.77rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.stitle .d {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.sgap { margin-top: 1.3rem; }
+.trow {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 0.7rem;
+  align-items: start;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.trow:last-child { border-bottom: none; }
+.tdot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 0.42rem;
+}
+.tbody {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--muted2);
+}
+.blist { display: flex; flex-direction: column; gap: 0.38rem; }
+.bitem {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--muted2);
+  padding-left: 1rem;
+  position: relative;
+}
+.bitem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--border2);
+}
+.lpill2 {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--accent);
+  border: 1px solid rgba(79,142,247,0.25);
+  background: rgba(79,142,247,0.07);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="hero">
-    <div>
-      <div class="hero-eyebrow">Portfolio 路 BIT 路 2026</div>
-      <h1>Sathuson<br>Kanagaratnam</h1>
-      <p class="hero-sub">Lernender Informatiker EFZ 路 Plattformentwicklung</p>
-      <span class="badge">2. Lehrjahr &nbsp;路&nbsp; DO-BIS-COB</span>
-    </div>
-    <img class="avatar" src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/foto.jpg" alt="Profilbild Sathuson Kanagaratnam">
+
+<div class="hero">
+  <div>
+    <div class="eyebrow">Portfolio &middot; BIT &middot; 2026</div>
+    <h1>Sathuson Kanagaratnam</h1>
+    <p class="sub">Lernender Informatiker EFZ &middot; Plattformentwicklung</p>
+    <span class="badge">2. Lehrjahr &nbsp;&middot;&nbsp; DO-BIS-COB</span>
   </div>
-  <div class="grid2">
-    <div class="panel">
-      <p class="panel-label">馃懁 Kontakt</p>
-      <div class="contact-grid">
-        <div class="contact-row"><label>Telefon</label><a href="tel:+41584637400">+41 58 463 74 00</a></div>
-        <div class="contact-row"><label>Mobil</label><a href="tel:+41792903161">+41 79 290 31 61</a></div>
-        <div class="contact-row"><label>E-Mail</label><a href="mailto:sathuson.kanagaratnam@bit.admin.ch">sathuson.kanagaratnam@bit.admin.ch</a></div>
-        <div class="sep"></div>
-        <div class="contact-row"><label>Arbeitgeber</label><span>Bundesamt f眉r Informatik und Telekommunikation</span></div>
-        <div class="contact-row"><label>Adresse</label><span>Eichenweg 3 路 Campus Meielen 路 3052 Zollikofen</span></div>
-      </div>
-      <a href="https://www.linkedin.com/in/sathuson-kanagaratnam-8089033ab/" target="_blank" class="li-btn">
-        <span class="li-icon">in</span> LinkedIn Profil
-      </a>
+  <img class="avatar"
+    src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/foto.jpg"
+    alt="Profilbild">
+</div>
+
+<div class="grid2">
+  <div class="panel">
+    <p class="plabel">Kontakt</p>
+    <div class="crow"><label>Telefon</label><a href="tel:+41584637400">+41 58 463 74 00</a></div>
+    <div class="crow"><label>Mobil</label><a href="tel:+41792903161">+41 79 290 31 61</a></div>
+    <div class="crow"><label>E-Mail</label><a href="mailto:sathuson.kanagaratnam@bit.admin.ch">sathuson.kanagaratnam@bit.admin.ch</a></div>
+    <div class="sep"></div>
+    <div class="crow"><label>Arbeitgeber</label><span>Bundesamt fuer Informatik und Telekommunikation</span></div>
+    <div class="crow"><label>Adresse</label><span>Eichenweg 3 &middot; Campus Meielen &middot; 3052 Zollikofen</span></div>
+    <a href="https://www.linkedin.com/in/sathuson-kanagaratnam-8089033ab/" target="_blank" class="libtn">
+      <span class="liico">in</span> LinkedIn Profil
+    </a>
+  </div>
+  <div class="panel">
+    <p class="plabel">Ueber mich</p>
+    <p class="atext">Ich heisse Sathuson, bin 17 Jahre alt und komme aus der Region Bern. Zurzeit absolviere ich meine Lehre als Informatiker EFZ mit Schwerpunkt Plattformentwicklung beim Bundesamt fuer Informatik und Telekommunikation.</p>
+    <p class="atext">Computer und Technik haben mich schon frueh fasziniert &mdash; ich wollte nicht nur Dinge benutzen, sondern verstehen, wie sie im Hintergrund funktionieren.</p>
+    <p class="plabel" style="margin-top:1rem; border:none; padding:0; margin-bottom:0.5rem;">Hobbys</p>
+    <div class="chips">
+      <span class="chip chipb">Gaming</span>
+      <span class="chip chipb">Fussball</span>
+      <span class="chip chipb">Fitness</span>
+      <span class="chip chipb">Boxen</span>
+      <span class="chip chipb">IT Projekte</span>
     </div>
-    <div class="panel">
-      <p class="panel-label">馃挰 脺ber mich</p>
-      <p class="about-text">Ich heisse Sathuson, bin 17 Jahre alt und komme aus der Region Bern. Zurzeit absolviere ich meine Lehre als Informatiker EFZ mit Schwerpunkt Plattformentwicklung beim Bundesamt f眉r Informatik und Telekommunikation.</p>
-      <p class="about-text">Computer und Technik haben mich schon fr眉h fasziniert 鈥?ich wollte nicht nur Dinge benutzen, sondern verstehen, wie sie im Hintergrund funktionieren.</p>
-      <div style="margin-top: 1rem;">
-        <p class="panel-label" style="margin-bottom: 0.6rem; border: none; padding: 0;">馃幃 Hobbys</p>
-        <div class="chip-cloud" style="margin-top: 0.6rem;">
-          <span class="chip chip-hobby">Gaming</span><span class="chip chip-hobby">Fussball</span>
-          <span class="chip chip-hobby">Fitness</span><span class="chip chip-hobby">Boxen</span>
-          <span class="chip chip-hobby">IT Projekte</span>
+  </div>
+</div>
+
+<div class="grid3">
+  <div class="panel">
+    <p class="plabel">Sprachen</p>
+    <div class="lrow"><span>Deutsch</span><span class="lpill">Muttersprache</span></div>
+    <div class="lrow"><span>Tamilisch</span><span class="lpill">Muttersprache</span></div>
+    <div class="lrow"><span>Englisch</span><span class="lpill">B2 / C1</span></div>
+    <div class="lnote">Cambridge B2 Abschluss</div>
+    <div class="lrow"><span>Franzoesisch</span><span class="lpill">A2</span></div>
+  </div>
+  <div class="panel">
+    <p class="plabel">Technische Interessen</p>
+    <div class="chips">
+      <span class="chip">Linux</span>
+      <span class="chip">Netzwerke</span>
+      <span class="chip">Python</span>
+      <span class="chip">Datenbanken</span>
+      <span class="chip">Docker</span>
+    </div>
+  </div>
+  <div class="panel">
+    <p class="plabel">Skills &middot; Basislehrjahr</p>
+    <div class="chips">
+      <span class="chip">Programmieren</span>
+      <span class="chip">Betriebssysteme</span>
+      <span class="chip">Telematik</span>
+      <span class="chip">Datenbanken</span>
+      <span class="chip">IoT</span>
+      <span class="chip">Netze</span>
+      <span class="chip">Server</span>
+      <span class="chip">Virtualisierung</span>
+      <span class="chip">IT-Sicherheit</span>
+      <span class="chip">Cloud</span>
+    </div>
+  </div>
+</div>
+
+<div style="margin-bottom: 1.2rem;">
+  <div class="panel">
+    <p class="plabel">BIT &middot; 2. Lehrjahr</p>
+    <div class="stitle"><span class="d"></span>1. Semester &middot; PS-OSS-CCR</div>
+    <div class="chips" style="margin-bottom:0.8rem;">
+      <span class="chip">Remedy Asset Management</span>
+      <span class="chip">Change Management</span>
+    </div>
+    <div class="trow"><div class="tdot"></div><div class="tbody">Asset Management verwalten</div></div>
+    <div class="stitle sgap"><span class="d"></span>2. Semester &middot; DO-BIS-COB &middot; Connectivity Building</div>
+    <div class="chips" style="margin-bottom:0.8rem;">
+      <span class="chip">Telefonie</span>
+      <span class="chip">LCM Staging</span>
+      <span class="chip">Visio Schemas</span>
+      <span class="chip">Bossy DB</span>
+      <span class="chip">Kupfer &amp; Glas</span>
+      <span class="chip">L3 VLAN</span>
+      <span class="chip">QIP / Subnetting</span>
+      <span class="chip">WAN-Erschliessung</span>
+      <span class="chip">BIT-Hardware</span>
+    </div>
+    <div class="trow"><div class="tdot"></div><div class="tbody">Mitarbeit beim LCM S2S &mdash; Staging des Routertyps C1131-8PLTEPWE</div></div>
+    <div class="trow"><div class="tdot"></div><div class="tbody">Schemaerstellung und Anpassungen in Visio</div></div>
+    <div class="trow"><div class="tdot"></div><div class="tbody">Vertiefter Einsatz von Bossy (Datenbank Kundenstandorte)</div></div>
+    <div class="trow"><div class="tdot"></div><div class="tbody">Erstellung diverser L3-VLAN-Interfaces</div></div>
+    <div class="trow"><div class="tdot"></div><div class="tbody">Subnetzverwaltung im QIP (IP-Verwaltungstool)</div></div>
+  </div>
+</div>
+
+<div>
+  <div class="panel">
+    <p class="plabel">Berufsschule</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+      <div>
+        <div class="stitle"><span class="d"></span>1. Lehrjahr</div>
+        <div class="blist">
+          <div class="bitem">431 Auftraege im eigenen Berufsumfeld selbstaendig durchfuehren</div>
+          <div class="bitem">319 Applikationen entwerfen und implementieren</div>
+          <div class="bitem">117 Informatik- und Netzinfrastruktur fuer ein kleines Unternehmen realisieren</div>
+          <div class="bitem">162 Daten analysieren und modellieren</div>
+          <div class="bitem">231 Datenschutz und Datensicherheit anwenden</div>
+          <div class="bitem">164 Datenbanken erstellen und Daten einfuegen</div>
+          <div class="bitem">122 Ablaeufe mit einer Scriptsprache automatisieren</div>
+          <div class="bitem">114 Codierungs-, Kompressions- und Verschluesselungsverfahren einsetzen</div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="grid3">
-    <div class="panel">
-      <p class="panel-label">馃實 Sprachen</p>
-      <div class="lang-row"><span>馃嚛馃嚜 Deutsch</span><span class="lang-pill">Muttersprache</span></div>
-      <div class="lang-row"><span>馃嚤馃嚢 Tamilisch</span><span class="lang-pill">Muttersprache</span></div>
-      <div class="lang-row"><span>馃嚞馃嚙 Englisch</span><span class="lang-pill">B2 / C1</span></div>
-      <div class="lang-note">Cambridge B2 Abschluss</div>
-      <div class="lang-row"><span>馃嚝馃嚪 Franz枚sisch</span><span class="lang-pill">A2</span></div>
-    </div>
-    <div class="panel">
-      <p class="panel-label">馃挕 Technische Interessen</p>
-      <div class="chip-cloud">
-        <span class="chip">馃惂 Linux</span><span class="chip">馃寪 Netzwerke</span>
-        <span class="chip">馃悕 Python</span><span class="chip">馃梽锔?Datenbanken</span>
-        <span class="chip">馃惓 Docker</span>
-      </div>
-    </div>
-    <div class="panel">
-      <p class="panel-label">馃幆 Skills 路 Basislehrjahr</p>
-      <div class="chip-cloud">
-        <span class="chip">Programmieren</span><span class="chip">Betriebssysteme</span>
-        <span class="chip">Telematik</span><span class="chip">Datenbanken</span>
-        <span class="chip">IoT</span><span class="chip">Netze</span>
-        <span class="chip">Server</span><span class="chip">Virtualisierung</span>
-        <span class="chip">IT-Sicherheit</span><span class="chip">Cloud</span>
-      </div>
-    </div>
-  </div>
-  <div class="grid2" style="margin-bottom: 1.2rem;">
-    <div class="panel full">
-      <p class="panel-label">馃洜锔?BIT 路 2. Lehrjahr</p>
-      <div class="sec-title"><span class="dot"></span> 1. Semester 路 PS-OSS-CCR</div>
-      <div class="chip-cloud" style="margin-bottom: 0.8rem;">
-        <span class="chip">Remedy Asset Management</span><span class="chip">Change Management</span>
-      </div>
-      <div class="tl-row"><div class="tl-dot"></div><div class="tl-body">Asset Management verwalten</div></div>
-      <div class="sec-title sec-gap"><span class="dot"></span> 2. Semester 路 DO-BIS-COB 路 Connectivity Building</div>
-      <div class="chip-cloud" style="margin-bottom: 0.8rem;">
-        <span class="chip">Telefonie</span><span class="chip">LCM Staging</span>
-        <span class="chip">Visio Schemas</span><span class="chip">Bossy DB</span>
-        <span class="chip">Kupfer &amp; Glas</span><span class="chip">L3 VLAN</span>
-        <span class="chip">QIP / Subnetting</span><span class="chip">WAN-Erschliessung</span>
-        <span class="chip">BIT-Hardware</span>
-      </div>
-      <div class="tl-row"><div class="tl-dot"></div><div class="tl-body">Mitarbeit beim LCM S2S 鈥?Staging des Routertyps C1131-8PLTEPWE</div></div>
-      <div class="tl-row"><div class="tl-dot"></div><div class="tl-body">Schemaerstellung und Anpassungen in Visio</div></div>
-      <div class="tl-row"><div class="tl-dot"></div><div class="tl-body">Vertiefter Einsatz von Bossy (Datenbank Kundenstandorte)</div></div>
-      <div class="tl-row"><div class="tl-dot"></div><div class="tl-body">Erstellung diverser L3-VLAN-Interfaces</div></div>
-      <div class="tl-row"><div class="tl-dot"></div><div class="tl-body">Subnetzverwaltung im QIP (IP-Verwaltungstool)</div></div>
-    </div>
-  </div>
-  <div class="grid2">
-    <div class="panel full">
-      <p class="panel-label">馃帗 Berufsschule</p>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-        <div>
-          <div class="sec-title"><span class="dot"></span> 1. Lehrjahr</div>
-          <div class="bullet-list">
-            <div class="bullet-item">431 Auftr盲ge im eigenen Berufsumfeld selbst盲ndig durchf眉hren</div>
-            <div class="bullet-item">319 Applikationen entwerfen und implementieren</div>
-            <div class="bullet-item">117 Informatik- und Netzinfrastruktur f眉r ein kleines Unternehmen realisieren</div>
-            <div class="bullet-item">162 Daten analysieren und modellieren</div>
-            <div class="bullet-item">231 Datenschutz und Datensicherheit anwenden</div>
-            <div class="bullet-item">164 Datenbanken erstellen und Daten einf眉gen</div>
-            <div class="bullet-item">122 Abl盲ufe mit einer Scriptsprache automatisieren</div>
-            <div class="bullet-item">114 Codierungs-, Kompressions- und Verschl眉sselungsverfahren einsetzen</div>
-          </div>
+      <div>
+        <div class="stitle"><span class="d"></span>2. Lehrjahr</div>
+        <div class="blist">
+          <div class="bitem">129 LAN-Komponenten in Betrieb nehmen</div>
+          <div class="bitem">123 Serverdienste in Betrieb nehmen</div>
+          <div class="bitem">346 Cloud Loesungen konzipieren und realisieren</div>
+          <div class="bitem">141 Datenbanksystem in Betrieb nehmen</div>
+          <div class="bitem">143 Backup- und Restore-Systeme implementieren</div>
+          <div class="bitem">169 Services mit Container bereitstellen</div>
         </div>
-        <div>
-          <div class="sec-title"><span class="dot"></span> 2. Lehrjahr</div>
-          <div class="bullet-list">
-            <div class="bullet-item">129 LAN-Komponenten in Betrieb nehmen</div>
-            <div class="bullet-item">123 Serverdienste in Betrieb nehmen</div>
-            <div class="bullet-item">346 Cloud L枚sungen konzipieren und realisieren</div>
-            <div class="bullet-item">141 Datenbanksystem in Betrieb nehmen</div>
-            <div class="bullet-item">143 Backup- und Restore-Systeme implementieren</div>
-            <div class="bullet-item">169 Services mit Container bereitstellen</div>
-          </div>
-          <div class="sec-title sec-gap" style="justify-content: space-between;">
-            <span style="display: flex; align-items: center; gap: 0.6rem;"><span class="dot"></span> 脺K 路 1. Lehrjahr</span>
-            <a href="https://confluence.bit.admin.ch/spaces/~u80875149/pages/1383237751/%C3%9CK+Zertifikate" target="_blank" class="link-pill">Zertifikate 鈫?/a>
-          </div>
-          <div class="bullet-list">
-            <div class="bullet-item">187 ICT-Arbeitsplatz mit Betriebssystem in Betrieb nehmen</div>
-            <div class="bullet-item">106 Datenbanken abfragen, bearbeiten und warten</div>
-            <div class="bullet-item">216 IoE 鈥?Endger盲te in bestehende Plattform integrieren</div>
-            <div class="bullet-item">109 Dienste in der Public Cloud betreiben und 眉berwachen</div>
-            <div class="bullet-item">184 Netzwerksicherheit implementieren</div>
-            <div class="bullet-item">188 Services warten, 眉berwachen und betreiben</div>
-            <div class="bullet-item">190 Virtualisierungsplattform aufbauen und betreiben</div>
-          </div>
+        <div class="stitle sgap" style="justify-content:space-between;">
+          <span style="display:flex;align-items:center;gap:0.55rem;"><span class="d"></span>UEK &middot; 1. Lehrjahr</span>
+          <a href="https://confluence.bit.admin.ch/spaces/~u80875149/pages/1383237751/%C3%9CK+Zertifikate" target="_blank" class="lpill2">Zertifikate</a>
+        </div>
+        <div class="blist">
+          <div class="bitem">187 ICT-Arbeitsplatz mit Betriebssystem in Betrieb nehmen</div>
+          <div class="bitem">106 Datenbanken abfragen, bearbeiten und warten</div>
+          <div class="bitem">216 IoE &mdash; Endgeraete in bestehende Plattform integrieren</div>
+          <div class="bitem">109 Dienste in der Public Cloud betreiben und ueberwachen</div>
+          <div class="bitem">184 Netzwerksicherheit implementieren</div>
+          <div class="bitem">188 Services warten, ueberwachen und betreiben</div>
+          <div class="bitem">190 Virtualisierungsplattform aufbauen und betreiben</div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 </body>
 </html>
