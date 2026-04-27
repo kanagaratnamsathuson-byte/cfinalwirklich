@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -171,12 +170,30 @@
     flex-shrink: 0; margin-top: 0.2rem; z-index: 1;
     box-shadow: 0 0 8px rgba(96,165,250,0.4);
   }
-  .edu-content { flex: 1; }
   .edu-role {
     font-size: 0.85rem; font-weight: 600; color: #ffffff; line-height: 1.3;
   }
   .edu-place {
     font-size: 0.78rem; color: #9ca3af; margin-top: 0.15rem;
+  }
+
+  /* Sprachen Bars */
+  .sp-item { padding: 0.55rem 0; border-bottom: 1px solid #2a2a2a; }
+  .sp-item:last-child { border-bottom: none; }
+  .sp-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; }
+  .sp-lang { font-size: 0.85rem; color: #fff; }
+  .sp-level { font-size: 0.7rem; background: #0a0a0a; color: #fff; padding: 0.18rem 0.55rem; border-radius: 999px; white-space: nowrap; }
+  .sp-bar-bg { height: 5px; background: #2a2a2a; border-radius: 999px; overflow: hidden; }
+  .sp-bar-fill { height: 100%; border-radius: 999px; background: #60a5fa; }
+  .sp-note { font-size: 0.72rem; color: #ffffff; margin-top: 0.25rem; }
+
+  /* Blinkender Punkt */
+  @keyframes blink-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(96,165,250,0.8); }
+    50% { opacity: 0.2; box-shadow: 0 0 2px rgba(96,165,250,0.2); }
+  }
+  .edu-node-active {
+    animation: blink-pulse 1.5s ease-in-out infinite;
   }
 
   @keyframes fadeUp {
@@ -280,55 +297,43 @@
 
   <div class="grid">
 
-   <div class="panel">
-  <p class="panel-title">🌍 Sprachen</p>
+    <div class="panel">
+      <p class="panel-title">🌍 Sprachen</p>
 
-  <style>
-    .sp-item { padding: 0.55rem 0; border-bottom: 1px solid #2a2a2a; }
-    .sp-item:last-child { border-bottom: none; }
-    .sp-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; }
-    .sp-lang { font-size: 0.85rem; color: #fff; }
-    .sp-level { font-size: 0.7rem; background: #0a0a0a; color: #fff; padding: 0.18rem 0.55rem; border-radius: 999px; white-space: nowrap; }
-    .sp-bar-bg { height: 5px; background: #2a2a2a; border-radius: 999px; overflow: hidden; }
-    .sp-bar-fill { height: 100%; border-radius: 999px; background: #60a5fa; }
-    .sp-note { font-size: 0.72rem; color: #ffffff; margin-top: 0.25rem; }
-  </style>
+      <div class="sp-item">
+        <div class="sp-row">
+          <span class="sp-lang">🇩🇪 Deutsch</span>
+          <span class="sp-level">Muttersprache</span>
+        </div>
+        <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 100%"></div></div>
+      </div>
 
-  <div class="sp-item">
-    <div class="sp-row">
-      <span class="sp-lang">🇩🇪 Deutsch</span>
-      <span class="sp-level">Muttersprache</span>
+      <div class="sp-item">
+        <div class="sp-row">
+          <span class="sp-lang">🇱🇰 Tamilisch</span>
+          <span class="sp-level">Muttersprache</span>
+        </div>
+        <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 100%"></div></div>
+      </div>
+
+      <div class="sp-item">
+        <div class="sp-row">
+          <span class="sp-lang">🇬🇧 Englisch</span>
+          <span class="sp-level">B2 / C1</span>
+        </div>
+        <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 80%"></div></div>
+        <div class="sp-note">Cambridge B2 Abschluss</div>
+      </div>
+
+      <div class="sp-item">
+        <div class="sp-row">
+          <span class="sp-lang">🇫🇷 Französisch</span>
+          <span class="sp-level">A2</span>
+        </div>
+        <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 50%"></div></div>
+      </div>
     </div>
-    <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 100%"></div></div>
-  </div>
 
-  <div class="sp-item">
-    <div class="sp-row">
-      <span class="sp-lang">🇱🇰 Tamilisch</span>
-      <span class="sp-level">Muttersprache</span>
-    </div>
-    <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 100%"></div></div>
-  </div>
-
-  <div class="sp-item">
-    <div class="sp-row">
-      <span class="sp-lang">🇬🇧 Englisch</span>
-      <span class="sp-level">B2 / C1</span>
-    </div>
-    <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 80%"></div></div>
-    <div class="sp-note">Cambridge B2 Abschluss</div>
-  </div>
-
-  <div class="sp-item">
-    <div class="sp-row">
-      <span class="sp-lang">🇫🇷 Französisch</span>
-      <span class="sp-level">A2</span>
-    </div>
-    <div class="sp-bar-bg"><div class="sp-bar-fill" style="width: 50%"></div></div>
-  </div>
-
-</div>
-   
     <div class="panel">
       <p class="panel-title">💡 Interessen</p>
       <div class="chips">
@@ -363,7 +368,7 @@
 
         <div class="edu-item">
           <div class="edu-year">2025 – 2028</div>
-          <div class="edu-node"></div>
+          <div class="edu-node edu-node-active"></div>
           <div class="edu-content">
             <div class="edu-role">Lernender Informatiker EFZ</div>
             <div class="edu-place">Bundesamt für Informatik und Telekommunikation (BIT) · Zollikofen</div>
@@ -372,7 +377,7 @@
 
         <div class="edu-item">
           <div class="edu-year">seit 2024</div>
-          <div class="edu-node"></div>
+          <div class="edu-node edu-node-active"></div>
           <div class="edu-content">
             <div class="edu-role">Berufslehre Informatiker Plattformentwicklung EFZ</div>
             <div class="edu-place">BIT · Klasse INF2024a · gibb Bern</div>
