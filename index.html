@@ -12,6 +12,15 @@
     --bg: #0a0a0a;
     --line: #1a1a1a;
     --muted: #6b6b6b;
+    --green: #4ade80;
+    --green-bg: rgba(74, 222, 128, 0.08);
+    --green-border: rgba(74, 222, 128, 0.2);
+    --grey: #9ca3af;
+    --grey-bg: rgba(156, 163, 175, 0.08);
+    --grey-border: rgba(156, 163, 175, 0.2);
+    --blue: #60a5fa;
+    --blue-bg: rgba(96, 165, 250, 0.08);
+    --blue-border: rgba(96, 165, 250, 0.25);
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--white); padding: 2rem 2.5rem; }
   .page { max-width: 100%; margin: 0 auto; font-size: 13px; }
@@ -33,40 +42,19 @@
   }
 
   .hero-avatar {
-    flex-shrink: 0;
-    width: 160px;
-    height: 190px;
-    border-radius: 8px;
-    border: 2.5px solid var(--accent);
-    object-fit: cover;
-    box-shadow: 0 0 20px rgba(96, 165, 250, 0.25);
-    background: #1a1a1a;
+    flex-shrink: 0; width: 160px; height: 190px; border-radius: 8px;
+    border: 2.5px solid var(--accent); object-fit: cover;
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.25); background: #1a1a1a;
   }
 
-  .contact-info-vertical {
-    display: flex; flex-direction: column; gap: 0.5rem;
-  }
-  .contact-name {
-    font-size: 0.95rem; font-weight: 600; color: #ffffff; margin-bottom: 0.3rem;
-  }
-  .contact-item-vertical {
-    display: flex; flex-direction: column; gap: 0.15rem;
-  }
-  .contact-label {
-    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--accent);
-  }
-  .contact-value {
-    font-size: 0.8rem; color: #ffffff; line-height: 1.4;
-  }
-  .contact-link {
-    font-size: 0.8rem; color: #ffffff; text-decoration: none;
-    transition: color 0.2s;
-  }
+  .contact-info-vertical { display: flex; flex-direction: column; gap: 0.5rem; }
+  .contact-name { font-size: 0.95rem; font-weight: 600; color: #ffffff; margin-bottom: 0.3rem; }
+  .contact-item-vertical { display: flex; flex-direction: column; gap: 0.15rem; }
+  .contact-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+  .contact-value { font-size: 0.8rem; color: #ffffff; line-height: 1.4; }
+  .contact-link { font-size: 0.8rem; color: #ffffff; text-decoration: none; transition: color 0.2s; }
   .contact-link:hover { color: var(--accent); }
-  .contact-divider {
-    height: 1px; background: #2a2a2a; margin: 0.3rem 0;
-  }
+  .contact-divider { height: 1px; background: #2a2a2a; margin: 0.3rem 0; }
 
   .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
   .grid-full { grid-column: 1 / -1; }
@@ -75,8 +63,7 @@
     background: #1a1a1a; border: 1px solid var(--line);
     border-radius: 10px; padding: 1rem;
     transition: transform 0.2s, box-shadow 0.2s;
-    animation: fadeUp 0.6s ease both;
-    color: var(--white);
+    animation: fadeUp 0.6s ease both; color: var(--white);
   }
   .panel:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(96, 165, 250, 0.2); }
 
@@ -90,8 +77,7 @@
   .chip {
     font-size: 0.78rem; background: #0a0a0a;
     border: 1px solid #2a2a2a; padding: 0.3rem 0.75rem;
-    border-radius: 999px; transition: all 0.2s; cursor: default;
-    color: #ffffff;
+    border-radius: 999px; transition: all 0.2s; cursor: default; color: #ffffff;
   }
   .chip:hover { border-color: var(--accent); color: var(--accent); background: #1a1a1a; }
 
@@ -107,16 +93,120 @@
   }
   .interest-chip:hover { background: var(--accent); border-color: var(--accent); }
 
+  /* Bildungsweg Timeline */
+  .edu-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .edu-timeline::before {
+    content: ''; position: absolute; left: 72px; top: 8px;
+    bottom: 8px; width: 2px; background: #2a2a2a;
+  }
+  .edu-item { display: flex; gap: 1.2rem; align-items: flex-start; padding: 0.7rem 0; position: relative; }
+  .edu-year { font-size: 0.72rem; font-weight: 600; color: var(--accent); letter-spacing: 0.04em; width: 60px; flex-shrink: 0; padding-top: 0.15rem; text-align: right; }
+  .edu-node { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #0a0a0a; flex-shrink: 0; margin-top: 0.2rem; z-index: 1; box-shadow: 0 0 8px rgba(96,165,250,0.4); }
+  .edu-role { font-size: 0.85rem; font-weight: 600; color: #ffffff; line-height: 1.3; }
+  .edu-place { font-size: 0.78rem; color: #9ca3af; margin-top: 0.15rem; }
+
+  /* Sprachen Bars */
+  .sp-item { padding: 0.55rem 0; border-bottom: 1px solid #2a2a2a; }
+  .sp-item:last-child { border-bottom: none; }
+  .sp-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; }
+  .sp-lang { font-size: 0.85rem; color: #fff; }
+  .sp-level { font-size: 0.7rem; background: #0a0a0a; color: #fff; padding: 0.18rem 0.55rem; border-radius: 999px; white-space: nowrap; }
+  .sp-bar-bg { height: 5px; background: #2a2a2a; border-radius: 999px; overflow: hidden; }
+  .sp-bar-fill { height: 100%; border-radius: 999px; background: #60a5fa; width: 0%; transition: width 2s cubic-bezier(0.4, 0, 0.2, 1); }
+  .sp-bar-fill.animate { width: var(--target-width); }
+  .sp-note { font-size: 0.72rem; color: #ffffff; margin-top: 0.25rem; }
+
+  /* ── STATUS BADGE ── */
+  .status-badge {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.22rem 0.65rem; border-radius: 999px;
+    border: 1px solid; flex-shrink: 0;
+  }
+  .status-done {
+    color: var(--green); background: var(--green-bg); border-color: var(--green-border);
+  }
+  .status-active {
+    color: var(--blue); background: var(--blue-bg); border-color: var(--blue-border);
+  }
+  .status-dot {
+    width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0;
+  }
+  .status-done .status-dot { background: var(--green); }
+  .status-active .status-dot { background: var(--blue); animation: pulse-blue 2s ease-in-out infinite; }
+
+  @keyframes pulse-blue {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ── MODULE GRID ── */
+  .module-section { margin-bottom: 1.6rem; }
+  .module-section:last-child { margin-bottom: 0; }
+
+  .module-section-header {
+    display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
+  }
+  .module-section-title {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #6b6b6b;
+  }
+  .module-section-line {
+    flex: 1; height: 1px; background: #2a2a2a;
+  }
+
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .module-card {
+    background: #111; border: 1px solid #2a2a2a; border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s, background 0.25s;
+    position: relative; overflow: hidden; cursor: default;
+  }
+  .module-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; border-radius: 8px 0 0 8px; transition: opacity 0.25s;
+  }
+  .module-card.done::before { background: var(--green); opacity: 0.6; }
+  .module-card.active::before { background: var(--blue); opacity: 0.6; }
+  .module-card.done:hover::before { opacity: 1; }
+  .module-card.active:hover::before { opacity: 1; }
+  .module-card::after {
+    content: ''; position: absolute; inset: 0;
+    opacity: 0; transition: opacity 0.3s;
+    pointer-events: none; border-radius: 8px;
+  }
+  .module-card.done::after {
+    background: radial-gradient(ellipse at top left, rgba(74,222,128,0.07) 0%, transparent 70%);
+  }
+  .module-card.active::after {
+    background: radial-gradient(ellipse at top left, rgba(96,165,250,0.09) 0%, transparent 70%);
+  }
+  .module-card:hover::after { opacity: 1; }
+  .module-card:hover { transform: translateY(-2px); background: #161616; }
+  .module-card.done:hover { border-color: var(--green-border); box-shadow: 0 4px 20px rgba(74,222,128,0.08), 0 1px 4px rgba(0,0,0,0.5); }
+  .module-card.active:hover { border-color: var(--blue-border); box-shadow: 0 4px 20px rgba(96,165,250,0.1), 0 1px 4px rgba(0,0,0,0.5); }
+  .module-card .module-name { transition: color 0.2s; }
+  .module-card:hover .module-name { color: #fff; }
+
+  .module-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+  .module-number { font-size: 0.68rem; font-weight: 700; color: var(--green); letter-spacing: 0.05em; }
+  .module-card.active .module-number { color: var(--blue); }
+  .module-name { font-size: 0.82rem; font-weight: 500; color: #e5e7eb; line-height: 1.35; margin-top: 0.1rem; }
+
+  /* BIT Semester Chip */
   .section-group { margin-bottom: 1.2rem; }
   .section-title {
     font-size: 0.9rem; font-weight: 600; color: #ffffff;
     margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px solid #2a2a2a;
   }
   .list-items { display: flex; flex-direction: column; gap: 0.4rem; }
-  .list-item {
-    font-size: 0.8rem; line-height: 1.4; color: #ffffff;
-    padding-left: 1rem; position: relative;
-  }
+  .list-item { font-size: 0.8rem; line-height: 1.4; color: #ffffff; padding-left: 1rem; position: relative; }
   .list-item:before { content: "•"; position: absolute; left: 0; }
 
   .linkedin-link {
@@ -129,72 +219,17 @@
   .linkedin-logo { font-size: 1.2rem; }
 
   .uk-button {
-    display: inline-block;
-    padding: 0.4rem 0.8rem; background: #0a0a0a; border: 1px solid var(--accent);
+    display: inline-block; padding: 0.4rem 0.8rem; background: #0a0a0a; border: 1px solid var(--accent);
     border-radius: 4px; text-decoration: none; color: var(--accent);
-    transition: all 0.2s; font-size: 0.75rem; font-weight: 600;
-    white-space: nowrap;
+    transition: all 0.2s; font-size: 0.75rem; font-weight: 600; white-space: nowrap;
   }
   .uk-button:hover { background: var(--accent); color: #000000; }
 
-  /* Bildungsweg Timeline */
-  .edu-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
-  .edu-timeline::before {
-    content: ''; position: absolute; left: 72px; top: 8px;
-    bottom: 8px; width: 2px; background: #2a2a2a;
-  }
-  .edu-item {
-    display: flex; gap: 1.2rem; align-items: flex-start;
-    padding: 0.7rem 0; position: relative;
-  }
-  .edu-year {
-    font-size: 0.72rem; font-weight: 600; color: var(--accent);
-    letter-spacing: 0.04em; width: 60px; flex-shrink: 0;
-    padding-top: 0.15rem; text-align: right;
-  }
-  .edu-node {
-    width: 12px; height: 12px; border-radius: 50%;
-    background: var(--accent); border: 2px solid #0a0a0a;
-    flex-shrink: 0; margin-top: 0.2rem; z-index: 1;
-    box-shadow: 0 0 8px rgba(96,165,250,0.4);
-  }
-  .edu-role {
-    font-size: 0.85rem; font-weight: 600; color: #ffffff; line-height: 1.3;
-  }
-  .edu-place {
-    font-size: 0.78rem; color: #9ca3af; margin-top: 0.15rem;
-  }
-
-  /* ── Sprachen Bars ── */
-  .sp-item { padding: 0.55rem 0; border-bottom: 1px solid #2a2a2a; }
-  .sp-item:last-child { border-bottom: none; }
-  .sp-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; }
-  .sp-lang { font-size: 0.85rem; color: #fff; }
-  .sp-level { font-size: 0.7rem; background: #0a0a0a; color: #fff; padding: 0.18rem 0.55rem; border-radius: 999px; white-space: nowrap; }
-  .sp-bar-bg { height: 5px; background: #2a2a2a; border-radius: 999px; overflow: hidden; }
-
-  .sp-bar-fill {
-    height: 100%;
-    border-radius: 999px;
-    background: #60a5fa;
-    width: 0%;                          /* Startzustand: unsichtbar */
-    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  /* Klasse wird per JS gesetzt wenn im Viewport */
-  .sp-bar-fill.animate {
-    width: var(--target-width);         /* Zielbreite aus data-Attribut */
-  }
-
-  .sp-note { font-size: 0.72rem; color: #ffffff; margin-top: 0.25rem; }
-
-  /* Blinkender Punkt */
   @keyframes blink-pulse {
     0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(96,165,250,0.8); }
     50% { opacity: 0.2; box-shadow: 0 0 2px rgba(96,165,250,0.2); }
   }
-  .edu-node-active {
-    animation: blink-pulse 1.5s ease-in-out infinite;
-  }
+  .edu-node-active { animation: blink-pulse 1.5s ease-in-out infinite; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -210,13 +245,12 @@
   .panel:nth-child(7) { animation-delay: 0.7s; }
   .panel:nth-child(8) { animation-delay: 0.8s; }
 
-  @media (max-width: 900px) {
-    .grid { grid-template-columns: 1fr 1fr; }
-  }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 600px) {
     .hero { flex-direction: column-reverse; align-items: flex-start; }
     .grid { grid-template-columns: 1fr; }
     .grid-full { grid-column: 1; }
+    .module-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -229,11 +263,7 @@
       <p>Lernender Informatik · Plattformentwicklung</p>
       <span class="tag">2. Lehrjahr · DO-BIS-COB</span>
     </div>
-    <img
-      class="hero-avatar"
-      src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/foto.jpg"
-      alt="Profilbild"
-    >
+    <img class="hero-avatar" src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/foto.jpg" alt="Profilbild">
   </div>
 
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
@@ -299,46 +329,22 @@
 
     <div class="panel">
       <p class="panel-title">🌍 Sprachen</p>
-
       <div class="sp-item">
-        <div class="sp-row">
-          <span class="sp-lang">🇩🇪 Deutsch</span>
-          <span class="sp-level">Muttersprache</span>
-        </div>
-        <div class="sp-bar-bg">
-          <div class="sp-bar-fill" style="--target-width: 100%"></div>
-        </div>
+        <div class="sp-row"><span class="sp-lang">🇩🇪 Deutsch</span><span class="sp-level">Muttersprache</span></div>
+        <div class="sp-bar-bg"><div class="sp-bar-fill" style="--target-width: 100%"></div></div>
       </div>
-
       <div class="sp-item">
-        <div class="sp-row">
-          <span class="sp-lang">🇱🇰 Tamilisch</span>
-          <span class="sp-level">Muttersprache</span>
-        </div>
-        <div class="sp-bar-bg">
-          <div class="sp-bar-fill" style="--target-width: 100%"></div>
-        </div>
+        <div class="sp-row"><span class="sp-lang">🇱🇰 Tamilisch</span><span class="sp-level">Muttersprache</span></div>
+        <div class="sp-bar-bg"><div class="sp-bar-fill" style="--target-width: 100%"></div></div>
       </div>
-
       <div class="sp-item">
-        <div class="sp-row">
-          <span class="sp-lang">🇬🇧 Englisch</span>
-          <span class="sp-level">B2 / C1</span>
-        </div>
-        <div class="sp-bar-bg">
-          <div class="sp-bar-fill" style="--target-width: 80%"></div>
-        </div>
+        <div class="sp-row"><span class="sp-lang">🇬🇧 Englisch</span><span class="sp-level">B2 / C1</span></div>
+        <div class="sp-bar-bg"><div class="sp-bar-fill" style="--target-width: 80%"></div></div>
         <div class="sp-note">Cambridge B2 Abschluss</div>
       </div>
-
       <div class="sp-item">
-        <div class="sp-row">
-          <span class="sp-lang">🇫🇷 Französisch</span>
-          <span class="sp-level">A2</span>
-        </div>
-        <div class="sp-bar-bg">
-          <div class="sp-bar-fill" style="--target-width: 50%"></div>
-        </div>
+        <div class="sp-row"><span class="sp-lang">🇫🇷 Französisch</span><span class="sp-level">A2</span></div>
+        <div class="sp-bar-bg"><div class="sp-bar-fill" style="--target-width: 50%"></div></div>
       </div>
     </div>
 
@@ -373,7 +379,6 @@
     <div class="panel grid-full">
       <p class="panel-title">📚 Bildungsweg</p>
       <div class="edu-timeline">
-
         <div class="edu-item">
           <div class="edu-year">2025 – 2028</div>
           <div class="edu-node edu-node-active"></div>
@@ -382,7 +387,6 @@
             <div class="edu-place">Bundesamt für Informatik und Telekommunikation (BIT) · Zollikofen</div>
           </div>
         </div>
-
         <div class="edu-item">
           <div class="edu-year">seit 2024</div>
           <div class="edu-node edu-node-active"></div>
@@ -391,7 +395,6 @@
             <div class="edu-place">BIT · Klasse INF2024a · gibb Bern</div>
           </div>
         </div>
-
         <div class="edu-item">
           <div class="edu-year">2024 – 2025</div>
           <div class="edu-node"></div>
@@ -400,7 +403,6 @@
             <div class="edu-place">BBC Bern – Basisbildungszentrum ICT · Berufsbildungscenter Bern</div>
           </div>
         </div>
-
         <div class="edu-item">
           <div class="edu-year">2021 – 2024</div>
           <div class="edu-node"></div>
@@ -409,7 +411,6 @@
             <div class="edu-place">Sekundarschule Sternenberg</div>
           </div>
         </div>
-
         <div class="edu-item">
           <div class="edu-year">2014 – 2021</div>
           <div class="edu-node"></div>
@@ -418,12 +419,13 @@
             <div class="edu-place">Primarschule Niederscherli</div>
           </div>
         </div>
-
       </div>
     </div>
 
+    <!-- BIT 2. Lehrjahr -->
     <div class="panel grid-full">
       <p class="panel-title">🛠️ BIT · 2. Lehrjahr</p>
+
       <div class="section-group">
         <div class="section-title">1. Semester (PS-OSS-CCR)</div>
         <div class="chips">
@@ -434,6 +436,7 @@
           <div class="tl-item"><div class="tl-dot"></div><div class="tl-text">Asset Management Verwalten</div></div>
         </div>
       </div>
+
       <div class="section-group">
         <div class="section-title">2. Semester (DO-BIS-COB · Connectivity Building)</div>
         <div class="chips">
@@ -457,157 +460,258 @@
       </div>
     </div>
 
+    <!-- BERUFSSCHULE mit neuem Modul-Design -->
     <div class="panel grid-full">
-      <p class="panel-title">🎓 Berufsschule</p>
-      <div class="section-group">
-        <div class="section-title">1. Lehrjahr</div>
-        <div class="list-items">
-          <div class="list-item">431 Aufträge im eigenen Berufsumfeld selbständig durchführen</div>
-          <div class="list-item">319 Applikationen entwerfen und implementieren</div>
-          <div class="list-item">117 Informatik- und Netzinfrastruktur für ein Kleines Unternehmen realisieren</div>
-          <div class="list-item">162 Daten analysieren und modellieren</div>
-          <div class="list-item">231 Datenschutz und Datensicherheit anwenden</div>
-          <div class="list-item">164 Datenbanken erstellen und Daten einfügen</div>
-          <div class="list-item">122 Abläufe mit einer Scriptsprache automatisieren</div>
-          <div class="list-item">114 Codierungs-, Kompressions- und Verschlüsselungsverfahren einsetzen</div>
+      <p class="panel-title">🎓 Berufsschule · Module</p>
+
+      <!-- 1. Lehrjahr -->
+      <div class="module-section">
+        <div class="module-section-header">
+          <span class="module-section-title">1. Lehrjahr</span>
+          <div class="module-section-line"></div>
+        </div>
+        <div class="module-grid">
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M431</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Aufträge im eigenen Berufsumfeld selbständig durchführen</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M319</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Applikationen entwerfen und implementieren</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M117</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Informatik- und Netzinfrastruktur für ein kleines Unternehmen realisieren</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M162</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Daten analysieren und modellieren</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M231</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Datenschutz und Datensicherheit anwenden</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M164</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Datenbanken erstellen und Daten einfügen</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M122</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Abläufe mit einer Scriptsprache automatisieren</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M114</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Codierungs-, Kompressions- und Verschlüsselungsverfahren einsetzen</div>
+          </div>
         </div>
       </div>
-      <div class="section-group">
-        <div class="section-title">2. Lehrjahr</div>
-        <div class="list-items">
-          <div class="list-item">129 LAN-Komponenten in Betrieb nehmen</div>
-          <div class="list-item">123 Serverdienste in Betrieb nehmen</div>
-          <div class="list-item">346 Cloud Lösungen konzipieren und realisieren</div>
-          <div class="list-item">141 Datenbanksystem in Betrieb nehmen</div>
-          <div class="list-item">143 Backup- und Restore-Systeme implementieren</div>
-          <div class="list-item">169 Services mit Container bereitstellen</div>
-         <div class="list-item">158 Software-Migration planen und durchführen</div>
-         <div class="list-item">254 Geschäftsprozesse beschreiben</div>
+
+      <!-- 2. Lehrjahr -->
+      <div class="module-section">
+        <div class="module-section-header">
+          <span class="module-section-title">2. Lehrjahr</span>
+          <div class="module-section-line"></div>
+        </div>
+        <div class="module-grid">
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M129</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">LAN-Komponenten in Betrieb nehmen</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M123</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Serverdienste in Betrieb nehmen</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M346</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Cloud Lösungen konzipieren und realisieren</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M141</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Datenbanksystem in Betrieb nehmen</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M143</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Backup- und Restore-Systeme implementieren</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">M169</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Services mit Container bereitstellen</div>
+          </div>
+          <div class="module-card active">
+            <div class="module-card-top">
+              <span class="module-number">M158</span>
+              <span class="status-badge status-active"><span class="status-dot"></span>Aktuell</span>
+            </div>
+            <div class="module-name">Software-Migration planen und durchführen</div>
+          </div>
+          <div class="module-card active">
+            <div class="module-card-top">
+              <span class="module-number">M254</span>
+              <span class="status-badge status-active"><span class="status-dot"></span>Aktuell</span>
+            </div>
+            <div class="module-name">Geschäftsprozesse beschreiben</div>
+          </div>
         </div>
       </div>
-      <div class="section-group">
-        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem;">
-          <div class="section-title" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none;">Überbetriebliche Kurse (1. Lehrjahr)</div>
+
+      <!-- ÜK -->
+      <div class="module-section">
+        <div class="module-section-header">
+          <span class="module-section-title">Überbetriebliche Kurse · 1. Lehrjahr</span>
+          <div class="module-section-line"></div>
           <a href="https://confluence.bit.admin.ch/spaces/~u80875149/pages/1383237751/%C3%9CK+Zertifikate" target="_blank" class="uk-button">ÜK Zertifikate →</a>
         </div>
-        <div class="list-items">
-          <div class="list-item">187 ICT-Arbeitsplatz mit Betriebssystem in Betrieb nehmen</div>
-          <div class="list-item">106 Datenbanken abfragen, bearbeiten und warten</div>
-          <div class="list-item">216 Internet of Everything - Endgeräte in bestehende Plattform integrieren</div>
-          <div class="list-item">109 Dienste in der Public Cloud betreiben und überwachen</div>
-          <div class="list-item">184 Netzwerksicherheit implementieren</div>
-          <div class="list-item">188 Services warten, überwachen und betreiben</div>
-          <div class="list-item">190 Virtualisierungsplattform aufbauen und betreiben</div>
+        <div class="module-grid">
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">ÜK187</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">ICT-Arbeitsplatz mit Betriebssystem in Betrieb nehmen</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">ÜK106</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Datenbanken abfragen, bearbeiten und warten</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">ÜK216</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Internet of Everything – Endgeräte in bestehende Plattform integrieren</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">ÜK109</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Dienste in der Public Cloud betreiben und überwachen</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">ÜK184</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Netzwerksicherheit implementieren</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">ÜK188</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Services warten, überwachen und betreiben</div>
+          </div>
+          <div class="module-card done">
+            <div class="module-card-top">
+              <span class="module-number">ÜK190</span>
+              <span class="status-badge status-done"><span class="status-dot"></span>Abgeschlossen</span>
+            </div>
+            <div class="module-name">Virtualisierungsplattform aufbauen und betreiben</div>
+          </div>
         </div>
       </div>
+
     </div>
 
   </div>
 </div>
 
 <script>
-  // Intersection Observer: Balken animieren sobald der Sprachen-Block sichtbar wird
   const bars = document.querySelectorAll('.sp-bar-fill');
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Kurze Verzögerung damit die CSS-Transition nicht sofort feuert
-          const bar = entry.target;
-          const delay = bar.dataset.delay || 0;
-          setTimeout(() => {
-            bar.classList.add('animate');
-          }, delay);
-          observer.unobserve(bar); // Nur einmal auslösen
-        }
-      });
-    },
-    {
-      threshold: 0.3, // Mindestens 30% des Elements muss sichtbar sein
-    }
-  );
-
-  // Gestaffelte Verzögerung pro Balken (0, 150, 300, 450 ms)
-  bars.forEach((bar, i) => {
-    bar.dataset.delay = i * 300;
-    observer.observe(bar);
-  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const delay = bar.dataset.delay || 0;
+        setTimeout(() => { bar.classList.add('animate'); }, delay);
+        observer.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach((bar, i) => { bar.dataset.delay = i * 300; observer.observe(bar); });
 </script>
 
-<!-- ── Motorrad Modal ── -->
+<!-- Motorrad Modal -->
 <div id="moto-modal" onclick="closeMoto(event)" style="
-  display: none;
-  position: fixed; inset: 0; z-index: 1000;
-  background: rgba(0,0,0,0);
-  backdrop-filter: blur(0px);
+  display: none; position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0); backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
   transition: background 0.5s ease, backdrop-filter 0.5s ease;
-  align-items: center;
-  justify-content: center;
-">
+  align-items: center; justify-content: center;
+  overflow-y: auto; padding: 2rem;">
   <div id="moto-card" style="
-    background: #111;
-    border: 1px solid #2a2a2a;
-    border-radius: 20px;
-    width: min(520px, 92vw);
-    overflow: hidden;
-    transform: scale(0.88) translateY(24px);
-    opacity: 0;
+    background: #111; border: 1px solid #2a2a2a; border-radius: 20px;
+    width: min(520px, 92vw); overflow: hidden;
+    transform: scale(0.88) translateY(24px); opacity: 0;
     transition: transform 0.55s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
     box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(96,165,250,0.08);
-  ">
-
-    <!-- Bild -->
+    margin: auto;">
     <div style="position:relative; width:100%; height:280px; overflow:hidden; background:#0a0a0a;">
-      <img
-        src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/mottorrad.jpg"
-        alt="Motorrad"
-        style="width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.04); transition: transform 8s ease;"
-        id="moto-img"
-      >
-      <!-- Gradient overlay -->
-      <div style="
-        position:absolute; inset:0;
-        background: linear-gradient(to bottom, transparent 40%, #111 100%);
-      "></div>
-      <!-- Schliessen-Button -->
+      <img src="https://raw.githubusercontent.com/kanagaratnamsathuson-byte/cfinalwirklich/main/mottorrad.jpg" alt="Motorrad"
+        style="width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.04); transition: transform 8s ease;" id="moto-img">
+      <div style="position:absolute; inset:0; background: linear-gradient(to bottom, transparent 40%, #111 100%);"></div>
       <button onclick="closeMotoBtn()" style="
-        position:absolute; top:14px; right:14px;
-        width:30px; height:30px; border-radius:50%;
-        background: rgba(255,255,255,0.12);
-        border: none; cursor:pointer; color:#fff;
-        font-size:1rem; line-height:1;
-        backdrop-filter: blur(6px);
-        transition: background 0.2s;
-        display:flex; align-items:center; justify-content:center;
-      " onmouseover="this.style.background='rgba(255,255,255,0.22)'"
-         onmouseout="this.style.background='rgba(255,255,255,0.12)'">✕</button>
+        position:absolute; top:14px; right:14px; width:30px; height:30px; border-radius:50%;
+        background: rgba(255,255,255,0.12); border: none; cursor:pointer; color:#fff;
+        font-size:1rem; line-height:1; backdrop-filter: blur(6px); transition: background 0.2s;
+        display:flex; align-items:center; justify-content:center;"
+        onmouseover="this.style.background='rgba(255,255,255,0.22)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.12)'">✕</button>
     </div>
-
-    <!-- Content -->
     <div style="padding: 1.6rem 1.8rem 2rem;">
-      <div style="
-        font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
-        text-transform: uppercase; color: #60a5fa; margin-bottom: 0.5rem;
-      ">Hobby · Leidenschaft</div>
-
-      <h2 style="
-        font-family: 'DM Serif Display', serif;
-        font-size: 1.7rem; color: #fff; line-height: 1.2; margin-bottom: 1rem;
-      ">Motorrad fahren</h2>
-
-      <p style="
-        font-size: 0.88rem; line-height: 1.8; color: #aaa;
-      ">
+      <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #60a5fa; margin-bottom: 0.5rem;">Hobby · Leidenschaft</div>
+      <h2 style="font-family: 'DM Serif Display', serif; font-size: 1.7rem; color: #fff; line-height: 1.2; margin-bottom: 1rem;">Motorrad fahren</h2>
+      <p style="font-size: 0.88rem; line-height: 1.8; color: #aaa;">
         Ich besitze seit einem Jahr eine Aprilia RS125 und sie macht mir unglaublich viel Spass. Das Fahren gibt mir ein Gefühl von Freiheit und ich geniesse jede einzelne Fahrt. Besonders gerne fahre ich auf den Gurnigel, der nur etwa zwanzig Minuten von mir entfernt ist. Die Strecke dort ist einfach perfekt, vor allem wegen der vielen Kurven, die das Fahren spannend und abwechslungsreich machen.
         <br><br>
-        Am liebsten bin ich aber nicht alleine unterwegs, sondern fahre auch oft mit meinen Freunden zusammen. Gemeinsam zu fahren macht alles noch besser, weil wir die gleiche Leidenschaft teilen und jede Ausfahrt zu einem besonderen Erlebnis wird. Egal ob kurze Tour oder längere Fahrt, für mich ist das Motorradfahren ein wichtiger Teil meines Alltags geworden.
+        Am liebsten bin ich aber nicht alleine unterwegs, sondern fahre auch oft mit meinen Freunden zusammen. Gemeinsam zu fahren macht alles noch besser, weil wir die gleiche Leidenschaft teilen und jede Ausfahrt zu einem besonderen Erlebnis wird.
       </p>
-
-      <div style="
-        display: flex; gap: 0.6rem; margin-top: 1.4rem; flex-wrap: wrap;
-      ">
+      <div style="display: flex; gap: 0.6rem; margin-top: 1.4rem; flex-wrap: wrap;">
         <span style="font-size:0.75rem; background:#1a1a1a; border:1px solid #2a2a2a; color:#fff; padding:0.3rem 0.8rem; border-radius:999px;">🏍️ Aprilia RS125</span>
         <span style="font-size:0.75rem; background:#1a1a1a; border:1px solid #2a2a2a; color:#fff; padding:0.3rem 0.8rem; border-radius:999px;">⛰️ Gurnigel</span>
         <span style="font-size:0.75rem; background:#1a1a1a; border:1px solid #2a2a2a; color:#fff; padding:0.3rem 0.8rem; border-radius:999px;">👥 Gruppenfahrten</span>
@@ -638,7 +742,6 @@
       });
     });
   }
-
   function closeMotoBtn() {
     const modal = document.getElementById('moto-modal');
     const card  = document.getElementById('moto-card');
@@ -648,12 +751,9 @@
     modal.style.backdropFilter = 'blur(0px)';
     setTimeout(() => { modal.style.display = 'none'; }, 500);
   }
-
   function closeMoto(e) {
     if (e.target === document.getElementById('moto-modal')) closeMotoBtn();
   }
-
-  // ESC zum Schliessen
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMotoBtn();
   });
