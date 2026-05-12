@@ -18,7 +18,7 @@
 body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--white); overflow-x:hidden; }
 canvas#starfield { position:fixed; inset:0; z-index:0; pointer-events:none; }
 
-.page { max-width:1100px; margin:0 auto; padding:2rem 2.5rem; font-size:13px; position:relative; z-index:1; }
+.page { width:100%; margin:0 auto; padding:2rem 3rem; font-size:13px; position:relative; z-index:1; }
 
 /* ─── HERO ─── */
 .hero {
@@ -281,7 +281,7 @@ canvas#starfield { position:fixed; inset:0; z-index:0; pointer-events:none; }
 ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#080810; } ::-webkit-scrollbar-thumb { background:rgba(96,165,250,0.2); border-radius:3px; }
 
 @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.hero{flex-direction:column-reverse;align-items:flex-start}.grid{grid-template-columns:1fr}.grid-full{grid-column:1}.module-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.hero{flex-direction:column-reverse;align-items:flex-start}.grid{grid-template-columns:1fr}.grid-full{grid-column:1}.module-grid{grid-template-columns:1fr 1fr}.page{padding:1rem 1.2rem}}
 
 /* ─── MOTO MODAL ─── */
 .moto-trigger { cursor:pointer; }
@@ -585,7 +585,7 @@ canvas#starfield { position:fixed; inset:0; z-index:0; pointer-events:none; }
   for (let i = 0; i < COUNT; i++) {
     stars.push({
       x: Math.random(), y: Math.random(),
-      z: Math.random(), // depth 0=far 1=near
+      z: Math.random(),
       size: Math.random() * 1.5 + 0.2,
       opacity: Math.random() * 0.6 + 0.1,
       speed: Math.random() * 0.00015 + 0.00005,
@@ -603,7 +603,6 @@ canvas#starfield { position:fixed; inset:0; z-index:0; pointer-events:none; }
     for (const s of stars) {
       s.twinkle += 0.015;
       const tw = Math.sin(s.twinkle) * 0.3 + 0.7;
-      // parallax offset by depth
       const ox = px * s.z * 0.5;
       const oy = py * s.z * 0.5;
       const sx = (s.x + s.speed * t * (0.3 + s.z * 0.7)) % 1;
@@ -614,7 +613,6 @@ canvas#starfield { position:fixed; inset:0; z-index:0; pointer-events:none; }
       const sz = s.size * (0.4 + s.z * 0.8);
 
       if (s.z > 0.6) {
-        // brighter stars get a glow
         const grd = ctx.createRadialGradient(screenX, screenY, 0, screenX, screenY, sz * 3);
         grd.addColorStop(0, `rgba(150,200,255,${alpha * 0.6})`);
         grd.addColorStop(1, 'rgba(0,0,0,0)');
@@ -640,7 +638,7 @@ canvas#starfield { position:fixed; inset:0; z-index:0; pointer-events:none; }
 
 /* ─── 3D TILT ON PANELS ─── */
 (function() {
-  const STRENGTH = 8; // max degrees
+  const STRENGTH = 8;
   const panels = document.querySelectorAll('[data-tilt]');
 
   panels.forEach(panel => {
